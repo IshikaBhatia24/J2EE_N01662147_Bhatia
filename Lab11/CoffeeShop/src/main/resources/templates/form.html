@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Employee Form</title>
+    <link rel="stylesheet" th:href="@{/styles.css}">
+</head>
+<body>
+
+<div class="form-container">
+    <h2 th:text="${employee.id == 0} ? 'Add Employee' : 'Edit Employee'"></h2>
+
+    <form th:action="@{/employee/save}" th:object="${employee}" method="post">
+        <input type="hidden" th:field="*{id}" />
+
+        <div class="form-group">
+            <label for="name">First Name</label>
+            <input type="text" th:field="*{firstName}" id="name" required />
+        </div>
+
+        <div class="form-group">
+            <label for="department">Last Name</label>
+            <input type="text" th:field="*{lastName}" id="department" />
+        </div>
+
+        <div class="form-group">
+            <label for="email">Email</label>
+            <input type="text" th:field="*{email}" id="email" required />
+        </div>
+
+        <button type="submit">Save</button>
+    </form>
+</div>
+
+</body>
+</html>
